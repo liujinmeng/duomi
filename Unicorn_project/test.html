@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/ecmascript" src="js/jquery-1.9.1.min.js"></script>
+
+</head>
+
+<body>
+<div class="idz">
+    <img src="images/idcard1.png" class="idcard1">
+    <img src="images/add.png" class="addimg" id="addimg1">
+    <input type="file" name="case1" accept="image/gif,image/jpeg,image/jpg,image/png" hidden="" id="case1">
+    <input type="hidden" name="idcard_front_pic" value="">                       
+</div>
+<!--<span>上传</span>
+<input type="file">
+--><script>
+/*	$(".idz img").click(function(){
+		$("#case1").click();
+		
+	})
+	$("#case1").change(function(){
+			alert(1);
+		});*/
+	 $('.idz img').click(function () {
+            document.getElementById("case1").click();
+            var lock_obj = 0;
+            
+        });
+	$('input[name="case1"]').change(function () {
+                if (lock_obj)return !1;
+                lock_obj = 1;
+                var $this = $(this);
+                APP.upload_img({
+                    input: $this,
+                    complete: function (data) {
+                        lock_obj = 0;
+                        $('[name="idcard_front_pic"]').val(data.path).attr('data-url', data.src);
+                    },
+                    readerOk: function (event) {
+                        lock_obj = 0;
+                        $("#addimg1").hide();
+                        $('.idz > .idcard1').attr('src', event.target.result);
+                    },
+                    readerErr: function (data) {
+                        lock_obj = 0;
+                        alert(data.message);
+                    },
+                });
+            });
+</script>
+</body>
+</html>

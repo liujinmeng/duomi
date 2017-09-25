@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商户管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<link rel="stylesheet" href="css/shangwu.css">
+<link rel="shortcut icon" href="images/favicon1.ico" />
+<script type="text/ecmascript" src="js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+	<div class="commonTop">
+    	<p class="pageName">商户管理</p>
+    </div>
+    <div class="listBox">
+        <table cellpadding="0" cellspacing="0"class="shopList">
+            <thead >
+            <tr>
+                <th class="wid1">商户名称</th>
+                <th class="wid2">入驻时间</th>
+                <th class="wid3">当月交易额</th>
+                <th class="wid4">商户状态</th>
+            </tr>
+            <tr class="firstline" style="background:#f00; height:2px;">
+                <th colspan="4"></th>
+            </tr>
+            </thead>
+            <tr>
+                <td class="wid1">全时便利店</td>
+                <td>2017-07-23</td>
+                <td>0</td>
+                <td>待审核</td>
+            </tr>
+            <tr>
+                <td>全时便利店（东三环呼家楼博瑞大厦高和翠店）</td>
+                <td>2017-07-23</td>
+                <td>666.80</td>
+                <td class="tongguo">审核通过</td>
+            </tr>
+             <tr>
+                <td>全时便利店（东三呼家楼博瑞大厦高和翠店）</td>
+                <td>2017-07-23</td>
+                <td>5234.80</td>
+                <td>冻结</td>
+            </tr>
+             <tr>
+                <td>全时便利店（东三环呼家楼博瑞大厦高和翠店）</td>
+                <td>2017-07-23</td>
+                <td>0</td>
+                <td>审核未通过</td>
+            </tr>
+             <tr>
+                <td class="wid1">全时便利店</td>
+                <td>2017-07-23</td>
+                <td>0</td>
+                <td>待审核</td>
+            </tr>
+            <tr>
+                <td>全时便利店（东三环呼家楼博瑞大厦高和翠店）</td>
+                <td>2017-07-23</td>
+                <td>666.80</td>
+                <td class="tongguo">审核通过</td>
+            </tr>
+             <tr>
+                <td>全时便利店（东三环呼家楼博瑞大厦高和翠店）</td>
+                <td>2017-07-23</td>
+                <td>5234.80</td>
+                <td>冻结</td>
+            </tr>
+             
+            <tr>
+                <td class="wid1">全时便利店</td>
+                <td>2017-07-23</td>
+                <td>0</td>
+                <td>待审核</td>
+            </tr>
+            <tr class="pageBox">
+                <td colspan="4"><img src="images/left0.png"><img src="images/left1.png"><span>1</span><img src="images/right1.png"><img src="images/right0.png"></td>
+            </tr>
+        </table>
+     </div>
+    <div class="commonBot">新商户入驻</div>
+    <script>
+	$(function(){
+		$(".shopList thead tr:nth-child(odd)").css("background","#fef9f9");
+		$(".shopList tbody tr:nth-child(even)").css("background","#fef9f9");
+		$(".shopList tr td:nth-child(2),.shopList tr td:nth-child(3),.shopList tr td:nth-child(4)").css("border-left","#feeeee solid 1px");
+		$(".shopList tr th:nth-child(2),.shopList tr th:nth-child(3),.shopList tr th:nth-child(4)").css("border-left","#feeeee solid 1px");
+		$("firstline").css("border-bottom","#f15a5b solid 2px");
+	})
+	</script>
+</body>
+</html>

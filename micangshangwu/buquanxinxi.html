@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商户补充信息</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<link rel="shortcut icon" href="images/favicon1.ico" />
+<link rel="stylesheet" href="css/shangwu.css">
+<script type="text/ecmascript" src="js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+	<div class="header2">
+    	<p>信息提交成功，请填写补充信息！</p>
+    </div>
+    <div class="messageBox">
+    	<div class="formbox">
+    		<label>商户位置</label><input type="text" maxlength="40" placeholder="请填写详细地址">
+        </div>
+        <div class="formbox">
+    		<label>主营类目</label><input type="text" maxlength="20" placeholder="如餐饮、健身、KTV等">
+        </div>
+        <div class="formbox nobotbor">
+    		<label>座机电话</label><input type="tel" maxlength="15" >
+        </div>
+    </div>
+    <div class="imgs clearfix">
+    	<ul>
+        	<li><img src="images/imgbg1.png"> <p>门店照片</p><input type="file"  hidden="" onchange="filesize(this)"></li>
+            <li><img src="images/imgbg2.png"><p>店主合影</p><input type="file" hidden="" onchange="filesize(this)"></li>
+            <li><img src="images/imgbg3.png"> <p>法人身份证正面</p><input type="file" hidden="" onchange="filesize(this)"></li>
+            <li><img src="images/imgbg4.png"><p>法人身份证反面</p><input type="file" hidden="" onchange="filesize(this)"></li>
+            <li><img src="images/imgbg5.png"> <p>特许经营许可证</p><input type="file" hidden="" onchange="filesize(this)"></li>
+        </ul>
+    </div>
+    <div class="commonBot">提&nbsp;&nbsp;交</div>
+    <script>
+		function filesize(ele) {    // 返回 KB，保留小数点后两位
+			//alert((ele.files[0].size / 1024).toFixed(2));
+			if(ele.files[0].size / 1024>10*1024){
+				alert("图片不能超过10M");
+				
+				return false;
+			}
+			
+			console.log(ele.files[0]);
+		}
+		
+		$(function(){
+			$(".imgs ul li img").css("height",$(".imgs ul li img").width()*0.64);
+			$("#myFile").on("change",function(){
+				 getFileSize() ;
+			});
+			$(".imgs ul li img").on("click",function(){
+				$(this).siblings("input").click();
+			});
+			$(".commonBot").on("click",function(){
+				//如果验证无误，按钮变化
+				$(this).addClass("wait").html("请稍后，处理中...");
+			});
+			
+		})
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>消费支付</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<link rel="stylesheet" href="css/zhifu.css">
+<link rel="shortcut icon" href="images/favicon2.ico" />
+<script type="text/ecmascript" src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <div class="wrap">
+          <div class="zhead" >
+              <p class="sjname">全时便利店（高和翠店）</p>
+              <div class="inputbox">
+                    <label>消费金额</label>
+                    <div class="box"><span>¥</span><div id="div" class="place">询问商家后输入</div>
+                    </div>
+              </div>
+              <p class="zhiFuBtn" >确认支付</p>
+          </div>
+      </div>
+      <!--键盘浮动层-->
+      <div class="layer"></div>
+      <div class="layer-content">
+          <div class="form_edit clearfix">
+              <div class="num">1</div>
+              <div class="num">2</div>
+              <div class="num">3</div>
+             
+             <!---->
+              <div class="num">4</div>
+              <div class="num">5</div>
+              <div class="num">6</div>
+              <div class="num">7</div>
+              <div class="num">8</div>
+              <div class="num">9</div>
+              <div class="num">0</div>
+              <div class="num">.</div>
+               <div id="remove"><img src="images/qu_xiao.png" class="bili"></div>
+              
+          </div>
+      </div>
+
+  </body>
+  <script type="text/javascript">
+  
+	  $(function(){
+		  $('.layer-content').animate({
+				bottom: 0
+			}, 400)
+		  $('.inputbox').click(function(e){
+			  
+			$('.layer-content').animate({
+				bottom: 0
+			}, 400)
+          
+			e.stopPropagation();
+		})
+		$('.wrap').click(function(){
+			$('.layer-content').animate({
+				bottom: '-400px'
+			}, 400)
+           
+		})
+        $('#fanhui').click(function(){
+            $('.layer-content').animate({
+                bottom: '-400px'
+            }, 400)
+            $('.layer-huiyuan').animate({
+                bottom: '-400px'
+            }, 400)
+        })
+		
+		$('.form_edit .num').click(function(){
+			if($("#div").html()=="询问商家后输入"){
+			 	 $("#div").html("").removeClass("place");
+			  }
+			var oDiv = document.getElementById("div");
+			oDiv.innerHTML += this.innerHTML;
+			$("#div").text($("#div").text().replace(/^\./g, "").replace(/\.{2,}/g, ".").replace(".", "$#$").replace(/\./g, "").replace("$#$", ".").replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'));
+			if($("#div").text().indexOf(".") == -1){
+					$("#div").text($("#div").text().substr(0, 4));
+			}
+			
+			if($("#div").text() !=''){
+				  if(isZhiFuBao()){
+			 		  $(".zhead").addClass("zheadzhifubao");
+				  }else if(isWechat()){
+					  $(".zhead").addClass("zheadweixin");
+				  }else{
+					  $(".zhead").addClass("zheadweixin");
+				  };
+				  $(".box span").show();
+				  var str=$("#div").text();
+				  if($.trim($("#div").text()).length == 2 & str.substr(0, 1) == "0"){
+					   if($("#div").text() == "0."){
+						}else {
+							$("#div").text(str.substr(1, 2));
+						}
+				   }
+				   $(".zhiFuBtn").html("确认支付"+splitNum($("#div").text()));
+			  }else{
+				  $(".box span").hide();
+				  $(".zhead").removeClass("zheadzhifubao");
+				  $(".zhead").removeClass("zheadweixin");
+				  $(".zhiFuBtn").html("确认支付");
+			  }
+		})
+		$('#remove').click(function(){
+			if($("#div").html()=="询问商家后输入"){
+			 	 $("#div").html("").removeClass("place");
+			  }
+			var oDiv = document.getElementById("div");
+			var oDivHtml = oDiv.innerHTML;
+			oDiv.innerHTML = oDivHtml.substring(0,oDivHtml.length-1);
+			if($.trim($("#div").text()).length == 0){
+				  $(".box span").hide();
+				  $(".zhead").removeClass("zheadzhifubao");
+				  $(".zhead").removeClass("zheadweixin");
+				  $(".zhiFuBtn").html("确认支付");
+				   $("#div").html("询问商家后输入").addClass("place");
+			}else{
+				$(".zhiFuBtn").html("确认支付"+splitNum($("#div").text()));
+			}
+		})
+	  });
+	  //拆分小数点
+		function splitNum(num){
+			var str = num.toString();
+			var arr = [];
+			var endStr = '';
+			if(str.indexOf('.')>=0){
+				arr=str.split('.');
+				var arr1=arr[1]+'00';
+				endStr = '<span class="mon">¥'+arr[0]+'.'+arr1.substr(0, 2)+'</span>';
+			}else{
+				endStr = '<span class="mon">¥'+str+'.00</span>'	
+			}
+			return endStr;
+		}
+	  //判断是支付宝app的浏览器
+	    function isZhiFuBao(){
+			var userAgent = navigator.userAgent.toLowerCase();
+			if(userAgent.match(/Alipay/i)=="alipay"){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	  //判断是微信app的浏览器
+	  function isWechat(){
+		  var userAgent = navigator.userAgent.toLowerCase();
+	  
+		  if(userAgent.match(/MicroMessenger/i)=="micromessenger") {
+			  return true;
+		  } else {
+			  return false;
+		  }
+	  }
+	</script>
+  
+  </html>

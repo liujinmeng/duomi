@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>提现申请</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<link rel="stylesheet" href="css/shanghu.css">
+<link rel="shortcut icon" href="images/favicon1.ico" />
+<script type="text/ecmascript" src="js/jquery-1.10.1.min.js"></script>
+</head>
+<body class="whitebg">
+	  <div class="txtop">
+      	 全时便利店（高和翠店）
+         <a href="javascript:;">交易流水</a>
+      </div>
+	  <div class="montop">
+      	  <p class="toptit">当前可提现金额（元）</p>
+          <p class="topmoney">1000.00</p>
+          <p class="tixianbtn">申请提现</p>
+      </div>
+      <div class="monmain">
+      	   <p>累计交易金额<span>1500.00</span></p>
+           <p>提现到账银行卡<span>中国银行 (1088)</span></p>
+           <p class="txintro">提现说明</p>
+      </div>
+      <div class="history hidden">
+      	  <p class="histit">提现记录</p>
+          <div class="detbox">
+          	  <div class="dettop">
+              	  <p>提现金额（元）</p>
+                  <p class="detmoney">1000.00</p>
+                  <p class="status">待处理</p>
+              </div>
+              <img src="images/line.png">
+          	  <div class="hisdetail">
+                  <p>提现时间<span>2017-07-12 12:45</span></p>
+                  <p>手续费<span>-2.00</span></p>
+                  <p>到账金额<span>498.00</span></p>
+                  <p>提现到账银行卡<span>中国银行 (1088)</span></p>
+             </div>
+          </div>
+          <div class="detbox">
+          	  <div class="dettop">
+              	  <p>提现金额（元）</p>
+                  <p class="detmoney">1000.00</p>
+                  <p class="status">审核未通过</p>
+              </div>
+              <img src="images/line.png">
+          	  <div class="hisdetail">
+                  <p>提现时间<span>2017-07-12 12:45</span></p>
+                  <p>手续费<span>-2.00</span></p>
+                  <p>到账金额<span>498.00</span></p>
+                  <p>提现到账银行卡<span>中国银行 (1088)</span></p>
+             </div>
+          </div>
+      </div>
+      <!--弹窗-->
+      <div class="tcbg"></div>
+      <!--提现窗口-->
+      <div class="tcinner">
+      	  <img src="images/close.png" class="close">
+          <div class="opbgbox">
+          	<h3>提现申请</h3>
+            <img src="images/tcline1.png" class="tcline">
+            <div class="sxbox">
+                <p class="same">提现金额<span>1000.00</span></p>
+                <p class="same">手续费<span>-0.80</span></p>
+                <p class="same mbheight">到账金额<span>999.20</span></p>
+                <p class="tips">预计1个工作日内完成审批，具体到账时间因银行系统不同而有所差异</p>
+                <p class="surebtn">确&nbsp;&nbsp;定</p>
+            </div>
+          </div>
+      </div>
+      <!--提现说明窗口-->
+      <div class="tcintro">
+      	  <img src="images/close.png" class="close">
+          <div class="opbgbox">
+          	<h3>提现说明</h3>
+            <p class="same1">每次提现申请将“当前可提现金额”全部申请提现</p>
+            <p class="same1">当日交易金额需次日方能提现</p>
+            <p class="same1">手续费为资金交易通道所产生的费用，每笔提现手续费为2元（固定）+提现金额*0.38%</p>
+            <p class="same1">提现申请将在1个工作日内完成放款审批，具体到账时间因银行系统不同而有所差异</p>
+            <p class="iknow">我知道了</p>
+          </div>
+      </div>
+<script>
+	 	$(function(){
+			$(".montop .tixianbtn").on("click",function(){
+				$(".tcbg,.tcinner").show();
+			});
+			$(".monmain .txintro").on("click",function(){
+				$(".tcbg,.tcintro").show();
+			});
+			$(".tcbg,.close,.tcintro .iknow").on("click",function(){
+				$(".tcbg,.tcinner,.tcintro").hide();
+			});
+			$(".tcinner .surebtn").on("click",function(){
+				$(".history").show();
+				$(".tcbg,.tcinner").hide();
+			});
+			if(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream){
+				$(".txtop a").css("padding","7px 0 8px");
+			}else{
+				$(".txtop a").css("padding","8px 0 7px");
+			}
+	    })
+	 </script>
+</body>
+  
+  </html>
